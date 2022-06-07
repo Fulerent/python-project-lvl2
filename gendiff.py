@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from logic.core_logic import parsing_cli
+from core_logic import parsing_cli
 
 
 def main():
