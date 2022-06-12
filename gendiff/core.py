@@ -6,5 +6,10 @@ def parsing_cli():
     files and shows a difference.')
     parser.add_argument('first_file')
     parser.add_argument('second_file')
+    parser.add_argument('-f', '--format', nargs='?',
+                        help='set format of output')
 
-    parser.print_help()
+    args = parser.parse_args()
+
+    if '-h' in args:
+        parser.print_help()
