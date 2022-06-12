@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from scripts.core_logic import core_logic
+from gendiff import core
 
 
 def main():
-    parsing_cli()
+    core.parsing_cli()
 
 
 if __name__ == 'main':
