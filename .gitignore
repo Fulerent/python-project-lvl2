@@ -4,9 +4,11 @@ dist/
 *.pyc
 .venv/
 .coverage
+.vscode/
 coverage.xml
 .pytest_cache/
 .vim
 .settings
 .file1.json
 .file2.json
+

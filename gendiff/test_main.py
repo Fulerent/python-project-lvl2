@@ -22,5 +22,5 @@ def get_template():
 def test_diff(get_template, get_test_data1, get_test_data2):
     data1, data2 = get_test_data1, get_test_data2
     result = diff_files.generate_diff(data1, data2)
-    
+
     assert result == get_template
