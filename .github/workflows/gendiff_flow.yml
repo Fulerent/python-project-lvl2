@@ -4,8 +4,11 @@ jobs:
   linter-check:
     runs-on: ubuntu-latest 
     steps:
-    - name: test-check
-      run: 
+    - name: linter-check
+      run: |
         pip install poetry
         make lint
+    - name: test-check
+      run: |
+        pip install pytest    
         make testing
