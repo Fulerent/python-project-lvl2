@@ -14,7 +14,10 @@ package-install:
 	python3 -m pip install --user dist/*.whl
 
 lint:
-	poetry run flake8
+	poetry run flake8 gendiff
 
-testing: 
+test: 
 	poetry run pytest
+
+test-coverage:
+	poetry run pytest --cov=hexlet_python_package --cov-report xml

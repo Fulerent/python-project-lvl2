@@ -9,6 +9,7 @@ coverage.xml
 .pytest_cache/
 .vim
 .settings
-.file1.json
-.file2.json
+.htmlcov
+.coverage
+test-reporter-latest-linux-amd64
 
