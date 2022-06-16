@@ -11,11 +11,11 @@ jobs:
     - name: test-check
       run: |
         pip install pytest    
-        make testing
+        make test
     - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.4
-        env:
-          CC_TEST_REPORTER_ID: c66fbbaa98f42743839400fda3cdbc9f410bd511854f288834b44bd425202c34
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+      uses: paambaati/codeclimate-action@v2.7.4
+      env:
+        CC_TEST_REPORTER_ID: c66fbbaa98f42743839400fda3cdbc9f410bd511854f288834b44bd425202c34
+      with:
+        coverageCommand: make test-coverage
+        debug: true
