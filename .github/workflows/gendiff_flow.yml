@@ -6,6 +6,7 @@ jobs:
     steps:
     - name: linter-check
       run: |
+        sudo apt install python3-testresources
         pip install poetry
         make lint
     - name: test-check
