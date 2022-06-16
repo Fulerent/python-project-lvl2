@@ -1,22 +1,30 @@
 name: tests-check
 on: push
 jobs:
-  linter-check:
-    runs-on: ubuntu-latest 
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # we want to test our package on several versions of Python
+        python-version: [3.8, 3.9]
     steps:
-    - name: linter-check
-      run: |
-        sudo apt install python3-testresources
-        pip install poetry
-        make lint
-    - name: test-check
-      run: |
-        pip install pytest    
-        make test
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.7.4
-      env:
-        CC_TEST_REPORTER_ID: c66fbbaa98f42743839400fda3cdbc9f410bd511854f288834b44bd425202c34
-      with:
-        coverageCommand: make test-coverage
-        debug: true
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+        # make depends on poetry
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          make install
+      - name: Run linter and pytest
+        run: |
+          make check
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.4
+        env:
+          CC_TEST_REPORTER_ID: c66fbbaa98f42743839400fda3cdbc9f410bd511854f288834b44bd425202c34
+        with:
+          coverageCommand: make test-coverage
+          debug: true
