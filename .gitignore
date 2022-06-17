@@ -7,6 +7,7 @@ dist/
 .vscode/
 coverage.xml
 .pytest_cache/
+.vscode/
 .vim
 .settings
 .htmlcov
