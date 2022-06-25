@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.1.5"
+version = "0.1.7"
 description = "CLI-programm for find diff two files"
 authors = ["KirillP <foll11@yandex.ru>"]
 packages = [
@@ -11,6 +11,7 @@ packages = [
 python = "^3.8"
 setuptools = "^62.4.0"
 pytest-cov = "^3.0.0"
+PyYAML = "^6.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"

@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-from gendiff import core
+from gendiff import cli
+import sys
 
 
 def main():
-    core.parsing_cli()
+    r = cli.parsing_cli()
+    sys.stdout.write(r)
 
 
 if __name__ == 'main':
