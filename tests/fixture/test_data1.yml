@@ -1,6 +1,0 @@
---- 
-follow: false
-host: hexlet.io
-int: 5
-optional: ~
-timeout: 20.15

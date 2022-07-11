@@ -3,38 +3,41 @@ from gendiff import diff_files
 from gendiff import parser_files
 
 
-@pytest.fixture
-def get_test_data1():
-    return 'tests/fixture/test_data1.yml'
-
-
-@pytest.fixture
-def get_test_data2():
-    return 'tests/fixture/test_data2.yml'
-
-
-@pytest.fixture
-def get_template():
-    temp = open('tests/fixture/after_diff.txt')
+def get_template(path):
+    temp = open(path)
 
     return temp.read()
 
 
 @pytest.mark.parametrize("input_path, expected_format", [
-                        ("fixture/test_data1.yml", 'yml'),
-                        ("tests/fixture/test_data1.json", "json")])
+                        ("../test.yml", 'yml'),
+                        ("tests/fixture/test.json", "json")])
 def test_get_format(input_path, expected_format):
     format = parser_files.get_format(input_path)
 
     assert format == expected_format
 
 
-def test_diff(get_template, get_test_data1, get_test_data2):
-    data1 = parser_files.pars(get_test_data1)
-    data2 = parser_files.pars(get_test_data2)
+def test_diff_json():
+    file_path1 = 'tests/fixture/test_data1.json'
+    file_path2 = 'tests/fixture/test_data2.json'
+    file_path_template = 'tests/fixture/after_diff_json.txt'
+    data1 = parser_files.pars(file_path1)
+    data2 = parser_files.pars(file_path2)
     result = diff_files.generate_diff(data1, data2)
 
-    assert result == get_template
+    assert result == get_template(file_path_template)
+
+
+def test_diff_yml():
+    file_path1 = 'tests/fixture/test_data3.yml'
+    file_path2 = 'tests/fixture/test_data4.yml'
+    file_path_template = 'tests/fixture/after_diff_yml.txt'
+    data1 = parser_files.pars(file_path1)
+    data2 = parser_files.pars(file_path2)
+    result = diff_files.generate_diff(data1, data2)
+
+    assert result == get_template(file_path_template)
 
 
 def test_invalid_format():

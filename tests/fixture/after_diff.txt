@@ -1,9 +1,0 @@
-{
-	- follow : False
-	host : hexlet.io
-	- int : 5
-	+ int : 10
-	- optional : None
-	timeout : 20.15
-	+ verbose : True
-}

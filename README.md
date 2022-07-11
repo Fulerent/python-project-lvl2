@@ -1,11 +1,14 @@
 
-[![Actions Status](https://github.com/Fulerent/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Fulerent/python-project-lvl2/actions) [![Actions Status](https://github.com/Fulerent/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Fulerent/python-project-lvl2/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/426fe096098a4173df9e/maintainability)](https://codeclimate.com/github/Fulerent/python-project-lvl2/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/426fe096098a4173df9e/test_coverage)](https://codeclimate.com/github/Fulerent/python-project-lvl2/test_coverage)
+[![Actions Status](https://github.com/Fulerent/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Fulerent/python-project-lvl2/actions) [![Actions Status](https://github.com/Fulerent/python-project-lvl2/workflows/gendiff_flow/badge.svg)](https://github.com/Fulerent/python-project-lvl2/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/426fe096098a4173df9e/maintainability)](https://codeclimate.com/github/Fulerent/python-project-lvl2/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/426fe096098a4173df9e/test_coverage)](https://codeclimate.com/github/Fulerent/python-project-lvl2/test_coverage)
 
 This Cli-program help you to diffent two files which have formats **.json** or **.yaml**.
 
 Use case:
+
 Install `pip install gendiff`
+
 Get help `gendiff -h`
+
 ```
 usage: gendiff [-h] first_file second_file
 

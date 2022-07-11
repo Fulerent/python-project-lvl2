@@ -15,7 +15,9 @@ def pars(file_path):
             file = yam_load(f, Loader=Loader)
         elif format == "json":
             file = json_load(f)
+            # print("file", file)
         else:
             return "I don't work with this format!"
 
     return file
+
