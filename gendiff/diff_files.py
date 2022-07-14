@@ -6,13 +6,17 @@ import parser_files
 
 def get_all_keys(dict1: dict, dict2: dict) -> list:
     try:
-        keys = list(OrderedDict.fromkeys(list(dict1.keys()) + list(dict2.keys())))
-        return keys
+        keys = OrderedDict.fromkeys(list(dict2.keys()) + list(dict1.keys()))
+        return list(keys)
     except AttributeError:
-        if not isinstance(dict1, dict) and dict is not None:
+        if not isinstance(dict1, dict):
             return list(dict2.keys())
         else:
             return list(dict1.keys())
+
+
+def is_dict(value):
+    return isinstance(value, dict)
 
 
 def generate_diff(file1: str, file2: str) -> list:
@@ -20,42 +24,47 @@ def generate_diff(file1: str, file2: str) -> list:
     diff_list = []
     # make deep-copy dictonarys
     d1, d2 = deepcopy(file1), deepcopy(file2)
-    # Get keys first and second file. It have not a reapeat.
+    # Get keys first and second file.
     # Are join them(save an original odrder)
-    keys = get_all_keys(d1, d2)
+    first_level_keys = get_all_keys(d1, d2)
 
     def iter_(keys, dict1, dict2, depth=0) -> str:
         if keys == []:
             return diff_list
 
         key = keys[0] if isinstance(keys, list) else keys
+        print("key === ", key)
         value1, value2 = dict1.get(key), dict2.get(key)
 
         if value1 is None and value2 is None:
             return diff_list
 
-        if not isinstance(value1, dict) and not isinstance(value2, dict):
+        if not is_dict(value1) and not is_dict(value2):
             diff_list.append(((depth, key), (value1, value2)))
-            return iter_(keys[1:], dict1, dict2, depth)
-        elif isinstance(value1, dict) and isinstance(value2, dict):
+        elif is_dict(value1) and is_dict(value2):
             diff_list.append(((depth, key)))
             next_keys = get_all_keys(value1, value2)
+            print("next_keys === ", next_keys)
+
             return iter_(next_keys, value1, value2, depth + 1)
-        # TODO: Will do a normal if/else    
-        else:
-            if not isinstance(value1, dict):
-                in_dict = dict2.get(key)
-                return (key, {}, in_dict, depth + 1)
+        elif not is_dict(value1) and is_dict(value2):
+            new_dict = dict2.get(key)
+            new_keys = list(new_dict.keys())
 
-            elif not isinstance(value2, dict):
-                in_dict = dict1.get(key)
-                return (key, in_dict, {}, depth + 1)
+            return iter_(new_keys, {}, new_dict, depth + 1)
+        elif is_dict(value1) and not is_dict(value2):
+            new_dict = dict1.get(key)
+            new_keys = list(new_dict.keys())
+            # print("new_keys === ", new_keys)
+            return iter_(new_keys, new_dict, {}, depth + 1)
+
+        return iter_(keys[1:], dict1, dict2, depth)
 
 
-    r = list((map(lambda x: iter_(x, d1, d2), keys)))
+    r = list(map(lambda x: iter_(x, d1, d2), first_level_keys))
     # r = iter_(keys, d1, d2)
 
-    print("r === ", r)
+    # diff_list = iter_(keys, d1, d2)
     return stylish.format(r)
 
 
