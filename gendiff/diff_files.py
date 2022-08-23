@@ -28,7 +28,7 @@ def generate_diff(file1: str, file2: str) -> list:
     # Are join them(save an original odrder)
     first_level_keys = get_all_keys(d1, d2)
 
-    def iter_(keys, dict1, dict2, depth=0) -> str:
+    def iter_(keys: list, dict1, dict2, depth=0) -> str:
         if keys == []:
             return diff_list
 
