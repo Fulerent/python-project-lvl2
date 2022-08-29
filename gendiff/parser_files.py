@@ -1,4 +1,4 @@
-# from yaml import Loader, load as yam_load
+from yaml import Loader, load as yam_load
 from json import load as json_load
 
 

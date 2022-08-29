@@ -2,7 +2,7 @@ from collections import OrderedDict
 from copy import deepcopy
 
 # import stylish
-import parser_files
+# import parser_files
 
 
 def get_all_keys(dict1: dict, dict2: dict) -> list:
@@ -30,7 +30,7 @@ def generate_diff(file1: dict, file2: dict) -> list:
     # Get keys first and second file.
     first_level_keys = get_all_keys(dict1, dict2)
 
-    def iter_(d1=dict1, d2=dict2, keys=first_level_keys, depth: int = 0) -> list:
+    def iter_(d1=dict1, d2=dict2, keys=first_level_keys, depth: int = 0) -> list: # noqa
         print("key === ", keys)
         key = keys[0] if isinstance(keys, list) else keys
 
@@ -64,7 +64,7 @@ def generate_diff(file1: dict, file2: dict) -> list:
     return diff_list
 
 
-""" 
+"""
 for tests:
 
 test_fil1 = parser_files.pars('tests/fixture/test_data1.json')
