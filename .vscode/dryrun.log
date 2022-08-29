@@ -1,4 +1,5 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-"make.exe" �� ���� ����७��� ��� ���譥�
-��������, �ᯮ��塞�� �ணࠬ��� ��� ������ 䠩���.
-
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/test/Project/python-project-lvl2'
+poetry install
+make: Leaving directory `/Users/test/Project/python-project-lvl2'
+ 

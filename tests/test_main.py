@@ -55,3 +55,6 @@ def test_invalid_path():
 
     assert str(e.value) == \
         "[Errno 2] No such file or directory: 'no_point_from_file_name/folder'"
+
+#TODO: Сделать тесты для форматера и вынести их в отдельный файл
+#TODO: Проверить, что вызывается необходимая функция standart_formater с помощью mock unittest

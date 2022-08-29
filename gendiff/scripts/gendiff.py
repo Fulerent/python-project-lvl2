@@ -8,5 +8,5 @@ def main():
     sys.stdout.write(r)
 
 
-if __name__ == 'main':
+if __name__ == "main":
     main()

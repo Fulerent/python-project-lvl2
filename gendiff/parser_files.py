@@ -1,4 +1,4 @@
-from yaml import Loader, load as yam_load
+# from yaml import Loader, load as yam_load
 from json import load as json_load
 
 
@@ -20,4 +20,3 @@ def pars(file_path):
             return "I don't work with this format!"
 
     return file
-
